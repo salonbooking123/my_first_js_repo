@@ -87,3 +87,8 @@
 // userTwo.email = "hitesh@google.com"
 // console.log(userOne.email);
 // console.log(userTwo.email);
+
+
+// const mySym=Symbol("nice")
+// console.log(mySym)
+// console.log(typeof(mySym))
