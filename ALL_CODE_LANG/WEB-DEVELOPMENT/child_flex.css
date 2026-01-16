@@ -1,0 +1,27 @@
+.container{
+    height: 350px;;
+    border:2px solid green;
+    display: flex;  
+    /* flex-wrap: wrap; */
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+}
+.box{
+    border:2px solid rgb(203, 22, 13);
+    width:40px;
+    /* width expanding speed of each box */
+    flex-grow: 1;
+    /* width shrinking speed of each box */
+    flex-shrink: 1;
+    /* provides width to the box */
+    flex-basis:60px;
+    
+    /* combination of all order grow shrink basis  */
+    flex:2 1 1 40px;
+    align-self: stretch;
+
+}
+#box1{order:1;}
+#box3{order:8;}
+#box4{order:6;}

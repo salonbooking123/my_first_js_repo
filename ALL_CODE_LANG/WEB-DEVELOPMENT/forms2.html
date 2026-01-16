@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>forms2</title>
+    <link rel="icon" type="image/png" href="linkedin.png">
+    <link rel="stylesheet" href="forms2.css">
+    <style>
+        #shifft {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h3 style="text-align: center;"><u style="color:blue"><a href="https://www.linkedin.com" target="_blank">Welcome to LinkedIn</a></u></h3>
+    <div id="shifft">
+    <h4><u>Contact Us Form..</u></h4>
+    <form action="https://www.linkedin.com" target="_blank">
+
+        <!-- VVI --- Very very important -->
+
+            <!-- The "label" and "input" tags identify each other using 'for' and 'id' values, which must match. 
+            The "name" attribute helps the form owner understand what kind of data is entered. -->
+
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" placeholder="Enter your Name">
+        <br>
+        <br>
+        <label for="email">Email ID:</label>
+        <input type="email" name="Email ID" id="email" placeholder="Enter your Email ID">
+        <br>
+        <br>
+        <label for="Resume">Resume:</label>
+        <input type="file" name="Resume" id="Resume" placeholder="Upload your Resume">
+        <br>
+        <br>
+        <label for="Contact No">Contact No.:</label>
+        <input type="tel" name="Contact No" id="Contact No" placeholder="Type your Contact No.">
+        <br>
+        <br>
+        <label for="Gender">Gender:</label>
+        <select id="Gender" style="text-align: center;">
+            <option value="">select</option>
+            <option value="Male">Male</option>
+            <option value="female">Female</option>
+            <option value="Others">Not to Say</option>
+        </select>
+        <br>
+        <br>
+        <label for="Date of Birth">Date of Birth:</label>
+        <input type="date" name="Date of Birth" id="Date of Birth">
+        <br>
+        <br>
+        <span>
+            <label for="Rating">Rating:</label>
+            <input type="radio" name="Rating" id="Rating1" value="1">
+            <label for="Rating1">1</label>
+            <input type="radio" name="Rating" id="Rating2" value="2">
+            <label for="Rating2">2</label>
+            <input type="radio" name="Rating" id="Rating3" value="3">
+            <label for="Rating3">3</label>
+            <input type="radio" name="Rating" id="Rating4" value="4">
+            <label for="Rating4">4</label>
+            <input type="radio" name="Rating" id="Rating5" value="5">
+            <label for="Rating5">5</label>
+        </span>
+        <br>
+        <br>
+        <br>
+        <h1 id="alertt"><marquee>⚠️Alert before clicking, Scam chances are there⚠️ </marquee></h1>
+        <br><br><br>
+        <span>
+            <label for="Enter Your Message">Enter Your Message:</label>
+            <br>
+            <textarea type="text" name="Message" id="Enter Your Message"  rows="4" cols="40" placeholder="Enter your Feedback"></textarea>
+        </span>
+        <br>
+        <input type="submit" value="Send" name="submit" id="submit">
+        <input type="reset" value="Reset" name="reset" id="reset">
+    </form>
+    <br>
+    <p><b> For more, contact us ...</b></p>
+    <footer>
+        <span>
+            <a href="https://www.google.com" target="_blank">
+                <img 
+                    src="Youtube.png"
+                    alt="Youtube"
+                    width="50"
+                    height="50"
+                />
+            </a>
+            <a href="https://www.facebook.com" target="_blank">
+                <img 
+                    src="instagram.png"
+                    alt="instagram"
+                    width="50"
+                    height="50"
+                />
+            </a>
+            <a href="https://www.whatspp.com" target="_blank">
+                <img 
+                    src="telegram.png"
+                    alt="telegram"
+                    width="50"
+                    height="50"
+                />
+            </a>
+        </span>
+    </footer>
+    </div>
+    <br>
+    <br>
+</body>
+</html>

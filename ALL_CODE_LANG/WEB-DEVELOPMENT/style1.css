@@ -1,0 +1,127 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Header */
+header {
+    background: #2e2e2e;
+    color: white;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.4);
+}
+
+header h1 {
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+/* Sections */
+section {
+    margin: 25px auto;
+    width: 90%;
+    max-width: 600px;
+}
+
+/* Saloon Card */
+.saloon-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    border-left: 6px solid #3d84ff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.saloon-card h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+/* Services Section */
+.services h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.service-box {
+    background: #f3f3f3;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border-left: 5px solid #25a18e;
+}
+
+/* Booking Form */
+.booking form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.booking input,
+.booking select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.booking button {
+    padding: 12px;
+    background: #3d84ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.booking button:hover {
+    background: #2c6ee8;
+}
+
+/* Queue Items */
+.queue h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.queue-item {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border-left: 5px solid #ffcc00;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.queue-item h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.done-btn {
+    margin-top: 10px;
+    padding: 10px;
+    background: #ff5252;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.done-btn:hover {
+    background: #e04444;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+    background: #2e2e2e;
+    color: white;
+}

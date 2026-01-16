@@ -1,0 +1,52 @@
+/* External CSS */
+/* we can insert any amount of colors like 1,2,3,4,5,6....so on. */
+body{
+    text-align: center;
+}
+#gradient1{
+    border:3px solid black;
+    width: 450px;
+    height: 80px;
+    background-image: linear-gradient(to left bottom ,red,aqua,green);
+}
+#gradient2{
+    border:3px solid black;
+    width: 450px;
+    height: 80px;
+    background-image: linear-gradient(to bottom ,aqua);
+}
+#gradient3{
+    border:3px solid black;
+    width: 450px;
+    height: 80px;
+    background-image: linear-gradient(to top ,red,aqua,green);
+}
+#gradient4{
+    border:3px solid black;
+    width: 450px;
+    height: 80px;
+    background-image: linear-gradient(30deg,red,aqua,green);
+}
+#gradient5{
+    border:3px solid black;
+    width: 450px;
+    height: 80px;
+    background-image: linear-gradient(to top ,rgba(183,0,0,0.4),rgba(0,0,269,0.8));
+}
+#gradient6{
+    border:3px solid black;
+    width: 450px;
+    height: 200px;
+    /* background-image: radial-gradient(red,orange,yellow,green,blue,indigo,violet); */
+
+    background-image:radial-gradient(pink 5%,indigo 37%, green 42%,aqua 47%,orange 36%);
+}
+.india{
+    text-align:center;
+    align-content: center;
+    border:3px solid black;
+    width: 350px;
+    height:180px;
+    background-image: linear-gradient(orange,white,green);
+
+}

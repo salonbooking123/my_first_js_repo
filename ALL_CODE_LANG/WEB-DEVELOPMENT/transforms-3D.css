@@ -1,0 +1,13 @@
+div{
+    margin-top: 180px;
+    margin-left: 150px;
+    width:130px;
+    height:120px;
+    background-color: pink;
+    border:2px solid black;
+}
+.shadow{
+    transform:rotatez(10deg);
+    transform:perspective(60px) translatez(-10px);
+    transform:perspective(150px) scalez(3) rotatex(30deg) rotateY(45deg) ;
+}

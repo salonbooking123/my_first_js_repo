@@ -1,0 +1,41 @@
+.container{
+    margin:auto;
+    font-weight: bold;
+    position: relative;
+    width:350px;
+    height: 180px;
+    border:2px solid blueviolet;
+    border-radius: 20px;
+}
+.pic{
+    border-radius: 20px;
+}
+
+/* placing texts over image */
+
+.babu{
+    position: absolute;
+    color:goldenrod;
+}
+.left-top{
+    top:0;
+    left:0;;
+}
+.left-bottom{
+    left:0;
+    bottom:0;
+}
+.right-top{
+    right:0;
+    top:0;
+}
+.right-bottom{
+    right:0;
+    bottom:0;
+}
+.centerr{
+    top:50%;
+    left:50%;
+    /* justify-content: center; */
+    /* align-content: center; */
+}

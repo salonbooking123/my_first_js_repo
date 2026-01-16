@@ -1,0 +1,42 @@
+.head{color:rgb(212, 226, 20);}
+.pass{
+    margin:auto;
+    width:360px;
+    height: 340px;
+    border:2px solid black;
+    text-align: center;
+    border-radius: 20px;
+    background-color:coral;
+    /* overflow: scroll; */
+    
+}
+.container{
+    position: relative;
+    color:green;
+}
+.press{
+    background-color:rgba(7, 244, 23, 0.4);
+}
+.imgtxt{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-150%);
+    color:aqua;
+    font-weight: bold;
+    font-size: 18px;
+    padding:5px 10px;
+    border-radius:5px;
+}
+.cost{
+    background-color:darkorange;
+    transform:translate(4%,100%);
+}
+.pic{
+    border-radius: 20px;
+}
+.fee{
+    margin-left: 59px;
+    display: flex;
+    gap:50px;
+}

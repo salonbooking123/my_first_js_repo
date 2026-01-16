@@ -1,0 +1,31 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+.container{
+    background-color: brown;
+    height: 900px;
+    border: 2px solid blue;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    /* fr->fraction, 1fr 1fr 1fr->repeat(3,1fr) or 1fr repeat(2,1fr); */
+    grid-template-rows: 100px repeat(2,100px) 100px;
+    gap:15px;
+}
+.box{
+    background-color: aqua;
+    border: 2px solid blue;
+    /* width:80px; */
+    /* height:80px; */
+}
+#box1{
+    /* for column merging */
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+#box3{ 
+    /* for row merging  */
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
