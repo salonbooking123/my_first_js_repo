@@ -1,0 +1,15 @@
+/* first doubt */
+
+/* body{
+    margin-top:30px;
+    display:inline-block;
+}  */
+/*.move{
+    /* Doubt :-> why these two lines are different from each other.....? */
+    /* transform:skew(30deg,20deg); */
+        /* ....or.... */
+    /* transform:skewx(30deg); */
+    /* transform:skewy(20deg); */
+/* } */
+
+/* second doubt */

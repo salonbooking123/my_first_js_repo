@@ -1,0 +1,24 @@
+.shadow{
+    /* (horizontal px) (vertical px) (blur px) (color), extension/multiple */
+    /* multiple text shadow */
+    text-shadow: 3px 4px 2px aqua, 20px 20px 3px red;
+    
+}
+.box{
+    margin:auto;
+    margin-top: 65px;
+    width:250px;
+    height:80px;
+    background: lawngreen;
+    color:blue;
+    /* multiple box shadow */
+    box-shadow:10px 10px 5px orangered,16px 15px 7px aqua;
+    border-radius: 15px;
+}
+.show{
+    /* multiple text shadow */
+    margin-top: 65px;
+    text-shadow: -19px -14px 2px blueviolet, 20px 20px 3px red;
+    
+}
+body{margin:auto;text-align: center;}

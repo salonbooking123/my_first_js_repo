@@ -1,0 +1,19 @@
+body{
+    margin-top:30px;
+    display:inline-block;
+} 
+.move{
+    background: aqua;
+    /* horizontal and vertical movements (tx,ty)*/
+    transform: translate(50px,50px);
+    /* Angular Movements(rx,ry) */
+    transform:rotate(-35deg);
+    /* scale:zoom in and zoom out (zx,zy)*/
+    transform:scale(0.8,3);
+    /* skew:contents tilt by some angle(ax,ay) */
+    transform:skew(30deg,20deg);
+    /* matrix :combination of all transform properties i.e. */
+    /* matrix(zx,ay,ax,zy,tx,ty) */
+    transform: matrix(2,1,1,1.5,30,30);
+    
+}

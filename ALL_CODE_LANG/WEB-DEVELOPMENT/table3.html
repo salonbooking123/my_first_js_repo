@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table3</title>
+    <style>
+        table,tr,td,th{
+            border:1px solid green;
+            border-collapse: collapse;
+            text-align: center;
+            caption-side: bottom;
+        }
+    </style>
+</head>
+<body>
+    <table style="margin:auto;">
+        <thead>
+            <th colspan="4" >Health Report:</th>
+        </thead>
+        <tbody>
+            <colgroup>
+                <col span="1" style="background:chocolate;">
+                <col span="2" style="background:pink;">
+                <col span="1" style="background:goldenrod;">
+            </colgroup>
+            <tr>
+                <th rowspan="2">State of Health</th>
+                <th colspan="2">Fasting Value</th>
+                <th>After Eating</th>
+            </tr>
+            <tr>
+                <th>Minimum</th>
+                <th>Maximum</th>
+                <th>2 hrs after eating</th>
+            </tr>
+            <tr span="3" style="background: aqua;">
+                <td>Healthy</td>
+                <td>70</td>
+                <td>100</td>
+                <td>less than 140</td>
+            </tr>
+            <tr>
+                <td>Pre-Diabetes</td>
+                <td>101</td>
+                <td style="visibility: hidden;">126</td>
+                <td>140 to 200</td>
+            </tr>
+            <tr>
+                <td>Diabetes</td>
+                <td>More than 126</td>
+                <td>N/A</td>
+                <td>More than 200</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <caption style="margin-top: 5%;"><u><b>PMCH Hospital</b></u></caption>
+        </tfoot>
+    </table>
+</body>
+</html>

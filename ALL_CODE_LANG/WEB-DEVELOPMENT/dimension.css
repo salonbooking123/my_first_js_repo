@@ -1,0 +1,12 @@
+.dimension{
+    margin-top: 60px;
+    max-height: 80px;
+    max-width: 350px;
+    border:2px solid black;
+    overflow:scroll;
+}
+.divi{
+    margin-top: 60px;
+    min-height: 100px;
+    border:2px solid black;
+}
