@@ -1,0 +1,51 @@
+-- 3rd file.sql
+
+create database faculty;
+use faculty;
+create table dept1(
+  empid int unique not null primary key,
+  name char(50) not null,
+  role char(25) not null
+);
+
+insert into dept1(empid,name,role) values
+    (1,'a','engineer'),
+    (2,'b','salesman'),
+    (3,'c','manager'),
+    (4,'d','salesman'),
+    (5,'e','engineer');
+
+create table dept2(
+  empid int unique not null primary key,
+  name char(50) not null,
+  role char(25) not null
+);
+
+insert into dept2(empid,name,role) values
+    (3,'c','manager'),
+    (6,'f','marketing'),
+    (7,'g','salesman');
+
+show databases;
+use faculty;
+show tables;
+select * from dept1;
+select * from dept2;
+
+-- list out all the employees and their details in the company
+select * from dept1 union select * from dept2;              -- 'union' acts like combined set without any duplicates.
+
+-- list out all employees in all departments who work as salesman.
+select * from dept1 where role='salesman' union select * from dept2 where role='salesman';
+
+-- list out all the employees who work for both the departments
+select dept1.empid,dept1.name,dept1.role from dept1,dept2 where dept1.empid=dept2.empid;      -- intersection of two tables;
+-- or
+select dept1.empid,dept1.name,dept1.role from dept1 inner join dept2 using(empid);            -- intersection of two tables;
+
+-- list out all the employees working in department1 but not in department2
+select * from dept1 except select * from dept2;                                        -- exception in department-1(D1-D2).....(except) word works only if the column names of both tables are same.
+
+-- or
+select dept1.* from dept1 left join dept2 using (empid)                                 -- exclusion in department-1(D1-D2)......(using) word works only if the column names of both tables are same.
+    where dept2.empid is null;

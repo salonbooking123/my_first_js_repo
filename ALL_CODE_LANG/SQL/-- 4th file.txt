@@ -1,0 +1,247 @@
+-- 4th file.sql
+
+create database org;
+show databases;
+use org;
+create table worker(
+    worker_id int not null primary key Auto_increment,
+    first_name char(25),
+    last_name char(25),
+    salary int(15),
+    joining_date datetime,
+    department char(25)
+);
+
+insert into worker(worker_id,first_name,last_name,salary,joining_date,department) values
+    (001,'monika','arora',100000,'14-02-20- 09:00:00','HR'),
+    (002,'niharika','verma',80000,'14-06-11 09:00:00','admin'),
+    (003,'vishal','singhal',300000,'14-02-20 09:00:00','HR'),
+    (004,'amitabh','singh',500000,'14-02-20 09:00:00','admin'),
+    (005,'Vivek','Bhatiya',500000,'14-06-11 09:00:00','admin'),
+    (006,'vipul','diwan',200000,'14-06-11 09:00:00','account'),
+    (007,'satish','kumar',75000,'14-01-20 09:00:00','account'),
+    (008,'geetika','chauhan',90000,'14-04-11 09:00:00','admin');
+
+create table bonus(
+    worker_ref_id int,
+    bonus_amount int(10),
+    bonus_date datetime,
+    foreign key (worker_ref_id)
+        references worker(worker_id)
+        on delete cascade
+);
+Insert into bonus (worker_ref_id,bonus_amount,bonus_date)values
+    -- (001,5000,'16-02-2020'),
+    (001,5000,'2020-02-16'),
+    (002,3000,'2011-06-16'),
+    (003,4000,'2020-02-16'),
+    (001,4500,'2020-02-16'),
+    (002,3500,'2011-06-16');
+
+create table title(
+    worker_ref_id int,
+    worker_title char(25),
+    affected_from datetime,
+    foreign key (worker_ref_id)
+        references worker (worker_id)
+        on delete cascade
+);
+show databases;
+insert into title (worker_ref_id,worker_title,affected_from) values
+    (001,'manager','2016-02-20 00:00:00'),
+    (002,'executive','2016-06-20 00:00:00'),
+    (008,'executive','2016-06-20 00:00:00'),
+    (005,'manager','2016-06-20 00:00:00'),
+    (004,'asst.manager','2016-06-20 00:00:00'),
+    (007,'executive','2016-06-20 00:00:00'),
+    (006,'lead','2016-06-20 00:00:00'),
+    (003,'lead','2016-06-20 00:00:00');
+
+--Q-1; write an sql query to fetch 'first_name' as worker table using the alias name as 'worker_name';
+select first_name as Worker_Name from worker;
+
+--Q-2: write an sql query to fetch first_name from worker table in upper case.
+select UPPER(first_name) as Worker_Name from worker
+
+--Q-3: write an sql query to fetch unique values of department from worker table.
+select distinct department from worker;
+select department from worker group by department;
+
+--Q-4: write an sql query to print first 3 characters of first_name from worker table.
+select substring(first_name,1,3) from worker;       -- or
+
+--Q-5: write an sql query to find position of alphabet 'b' in first name as'amitabh' from the first_name col of worker table.
+select INSTR(first_name,'b') from worker where first_name='amitabh';
+
+--Q-6: write an sql query to print first_name from worker table after removing white spaces from the right side.
+select RTRIM (first_name) from worker;
+
+--Q-7: write an sql query to print department from worker table after removing white spaces from the left side.
+select LTRIM (department) from worker;
+
+--Q-8: write an sql query that fetches unique values of department from worker table and print its length.
+select distinct department,LENGTH(department) from worker;
+
+--Q-9: write an sql query to print first_name from worker table after replacing 'a' with 'A';
+select replace(first_name,'a','A') from worker;
+
+--Q-10: write an sql query to print first_name&last_name from worker table into single column 'complete_name'.
+select CONCAT(first_name,'  ',last_name) as complete_name from worker;
+
+--Q-11: write an sql query to print all details of worker ordered by first_name in ascending order.
+SELECT * from worker order by first_name;
+
+--Q-12: write an sql query to print all details of worker ordered by first_name ascending and department descending order
+select * from worker order by first_name,department DESC;
+
+--Q-13: write an sql query to print worker details with first_name as 'vipul' or 'satish'.
+select * from worker where first_name in(select first_name from worker where first_name='vipul' or first_name='satish');
+select * from worker where first_name in('vipul','satish');
+
+--Q-14: write an sql query to print worker details excluding those having first_name as 'vipul' or 'satish'.
+select * from worker where first_name not in(select first_name from worker where first_name='vipul' or first_name='satish');
+select * from worker where first_name not in('vipul','satish');
+
+--Q-15: write an sql query to print worker details with department name as 'admin'.
+select * from worker where department='admin';
+
+--Q-16: write an sql query to print worker details whose first_name contains 'a'.
+select * from worker where first_name like '%a%';
+
+--Q-17: write an sql query to print worker details whose first_name ends with 'a'.
+select * from worker where first_name like '%a';
+
+--Q-18: write an sql query to print worker details whose first_name ends with 'h' and contains 6 alphabets.
+select * from worker where first_name like '%h' and LENGTH(FIRST_NAME)=6;               --or
+select * from worker where first_name like '_____h';                        -- five times underscore(_) before 'h'& last one 'h' itself.
+
+--Q-19: write an sql query to print worker details whose salary lies b/w 100000 to 500000.
+select * from worker where salary between 100000 and 500000;
+
+--Q-20: write an sql query to print worker details who have joined in feb-2014.
+select * from worker where joining_date like '2014-02';
+
+--Q-21: write an sql query to fetch count of employes working in department 'admin';
+select count(*),department from worker where department=admin;
+select count(*),department from worker group by department(admin);
+
+--Q-22: write an sql query to fetch salary & full name of the workers having salary b/w 50000 & 100000.
+select CONCAT(first_name,' ',last_name), salary from worker where salary between 50000 and 100000;
+
+--Q-23: write an sql query to fetch no. of workers in each department in the descending order.
+select department,count(*) as no_of_workers from worker group by department order by no_of_workers desc;
+
+--Q-24: write an sql query to print workers details who are workers as well as managers also.
+select w.*,t.worker_title from worker as w inner join title as t on w.worker_id=t.worker_ref_id  where t.worker_title='manager';   -- with join
+select w.*,t.worker_title from worker as w, title as t where w.worker_id=t.worker_ref_id and t.worker_title='manager';             --without join
+
+--Q-25: write an sql query to fetch number of same worker_titles(i.e. people more than 1 in same domain) in the ORG database of different types.
+select worker_title,count(*) as numberrr from title group by worker_title having numberrr>1;
+
+--Q-26: write an sql query to show only odd rows from a table.
+select * from worker where worker_id MOD 2=1;       -- or
+select * from worker where MOD(worker_id,2)!=0;
+select * from worker where MOD(worker_id,2)<>0;            -- symbol '<>' also act as not equal to sign('!=');
+
+--Q-27: write an sql query to show only even rows from a table.
+select * from worker where worker_id MOD 2=0;      --or
+select * from worker where MOD(worker_id,2)=0;
+
+--Q-28: write an sql query to clone a new table from another table.
+CREATE TABLE WORKER_CLONE LIKE WORKER;
+INSERT INTO WORKER_CLONE SELECT * FROM WORKER;
+
+--Q-29: write an sql query to fetch intersecting records of two tables.
+select worker.* from worker,title where worker.worker_id=title.worker_ref_id;
+select worker.* from worker inner join title on worker.worker_id=title.worker_ref_id;
+
+--Q-30: write an sql query to show records from one table that another table doesn't have.
+select worker.* from worker left join title on worker.worker_id=title.worker_ref_id where title.worker_ref_id is NULL;
+
+--Q-31: write an sql query to show current date and time.
+select now();   -- or
+select curdate();   -- for date only
+
+--Q-32: write an sql query to show top n(say 5) records of a table order by descending salary.
+select * from worker as w1
+    where 5>= (select count(w2.salary)from worker w2 where w2.salary>=w1.salary) order by salary desc;     --or
+select * from worker order by salary desc LIMIT 5;
+
+--Q-33: write an sql query to determine the Nth (say n=5) highest salary from a table.
+select * from worker order by salary desc LIMIT 4,1;      -- LIMIT(beginning pos., count) ..for 6th highest -> ....LIMIT 5,1;
+
+--Q-34: write an sql query to determine 5th highest salary without using LIMIT keyword.
+select * from worker as w1
+    where 5= (select count(w2.salary)from worker w2 where w2.salary>=w1.salary);        -- using loop
+
+--Q-35: write an sql query to fetch list of employes with same salary.
+select salary,count(*) AS same_salary from worker group by salary HAVING count(*)>1;           -- precise information
+select * from worker where salary in(select salary AS matching_salary from worker group by salary HAVING count(*)>1);  -- detailed information
+
+--Q-36: write an sql query to fetch 2nd highest salary from table.
+select * from worker as w1
+    where 2= (select count(distinct(w2.salary))from worker w2 where w2.salary>=w1.salary);       --using loop(co-related sub-query)  OR
+select * from worker order by salary desc LIMIT 2,1;                                     -- using LIMIT KEYWORD
+select max(salary) from worker where salary not in(select max(salary) from worker);      -- using only sub-query concept
+
+--Q-37: write an sql query to show one row twice in results from a table.
+select * from worker union select * from worker;                               -- this is union set which removes duplicates if any from the union.
+select * from worker union all select * from worker;                           -- only for fun, try this one.
+select * from worker union all select * from worker order by worker_id;        -- only for fun, try this one.
+
+--Q-38: write an sql to list worker_id who doesn't get bonus.
+select * from worker where worker_id not in (select worker_ref_id from bonus);
+
+--Q-39: write an sql to fetch first 50% records from a table.
+select * from worker where worker_id<=(select count(worker_id)/2 from worker);
+
+--Q-40: write an sql query to fetch the departments that have less than 4 people in it.
+select department,count(*) as number_of_people from worker group by department having number_of_people<4;
+
+--Q-41: write an sql query to show all the departments along with the no. of people working there.
+select department,count(*) as people_count from worker group by department;
+
+--Q-42: write an sql query to fetch the last row from a table.
+select * from worker where worker_id=(select max(worker_id) from worker);
+
+--Q-43: write an sql query to fetch the first row of a table.
+select * from worker where worker_id=(select min(worker_id) from worker);
+
+--Q-44: write an sql query to fetch the last 5 records from a table.
+(select * from worker order by worker_id desc limit 5) order by worker_id;
+
+--Q-45: write an sql query to print the number of employes having highest salary in each department.
+select * from worker where salary in(select max(salary) from worker group by department);
+
+--Q-46: write an sql salary to print the 3 max salaries from the table.
+select distinct salary from worker as w1
+    where 3>= (select count(distinct(w2.salary))from worker w2 where w2.salary>=w1.salary) order by w1.salary desc;       --using loop(co-related sub-query)
+
+--Q-47: write an sql salary to print the 3 min salaries from the table.
+select distinct salary from worker as w1
+    where 3>= (select count(distinct(w2.salary))from worker w2 where w2.salary<=w1.salary order by w1.salary) order by w1.salary;       --using loop(co-related sub-query)
+
+--Q-48: write an sql salary to print the nth max salary from the table.
+select distinct salary from worker as w1
+    where n= (select count(distinct(w2.salary))from worker w2 where w2.salary>=w1.salary);       --using loop(co-related sub-query)
+
+--Q-49: write an sql query to fetch departments along with the total salaries paid to each of them.
+select department,sum(salary) from worker group by department;
+
+--Q-50: write an sql query to fetch the names of workers who earn the highest salary.
+select * from worker where salary in(select max(salary) from worker);
+
+create database temp;
+use temp;
+create table pairs(
+    a int,
+    b int
+);
+insert into pairs values(1,2),(2,4),(2,1),(3,2),(4,2),(5,6),(6,5),(7,8);
+
+--Q-1: Reversed pairs in the data should not exist.
+-- Method-1 : join method
+select col1.* from pairs col1 left join pairs col2 on col1.a=col2.b and col2.a=col1.b where col2.a is NULL OR col1.a<col1.b;
+
+--method-2: co-related sub-query method
+select col1.* from pairs col1 where not exists (select * from pairs col2 where col1.a=col2.b and col1.b=col2.a and col1.A>col2.A);

@@ -1,0 +1,87 @@
+-- 1st file.sql
+CREATE DATABASE CUSTOMERS;
+USE CUSTOMERS;
+CREATE TABLE Customer(
+    CUS_ID INT PRIMARY KEY,
+    CUS_NAME VARCHAR(225),
+    ADDRESS VARCHAR(225),
+    GENDER CHAR(2),
+    CITY VARCHAR(225),
+    PINCODE INTEGER
+);
+INSERT INTO Customer values			-- parent table
+ 	(1251,'ram kumar','dilbagh nagar','M','jalandhar',144002),
+    (1300,'shyam singh','ludhiana h.o.','M','ludhiana',141001),
+    (245,'neelabh shukla','ashok nagar','M','jalandhar',144003),
+    (210,'barkha singh','dilbagh nagar','F','jalandhar',144002),
+    (504,'rohan arora','ludhiana Headquarter','M','ludhiana',141007);
+REPLACE INTO CUSTOMER(cus_id,cus_name,gender,city) values (1251,'chandra babu','M','daudnagar'); -- if data already exists, replaces the new data and sets other data to null if not full info provided in the replacement line
+REPLACE INTO CUSTOMER(cus_id,cus_name,gender,city) values (1333,'sumit babu','M','aurangabad');  -- if data not exists, creats a new row containing data, and sets other cols to null if not full info provided.
+-- or replacement done through setting values
+replace into customer set cus_id=245,cus_name='nilmati',address='phulwarisarif',gender='F',city='patna',pincode=824113;  -- replacement done by setting the values
+-- or replacement done inderectly
+replace into customer(cus_id,cus_name,city,pincode)  -- keeping these mentioned things as it is,& setting other things to null;
+ 	select cus_id,cus_name,city,pincode
+    from customer where cus_id=504;
+insert into customer values (1252,'ram chandra','dilbagh nagar','M','jalandhar',NULL);
+delete from customer where cus_id=1252;
+select * from customer;
+CREATE TABLE ORDER_DETAILS(         -- child table having parent customer table
+ 	ORDER_ID INT primary key,
+    DELIVERY_DATE DATE,
+    CUST_ID INT,
+    FOREIGN KEY(CUST_ID) REFERENCES CUSTOMER(CUS_ID) ON DELETE SET NULL		-- on delete set NULL: if parent row is deleted successfully from parent table, none of orders from its child table will be deleted, and the corresponding foreign key values will be set to null in the parent(reference column) of child table;
+);
+-- CREATE TABLE ORDER_DETAILS(         -- child table 'order_details' having 'parent'-> customer table
+-- 	ORDER_ID INT primary key,
+--     DELIVERY_DATE DATE,
+--     CUST_ID INT,
+--     FOREIGN KEY(CUST_ID) REFERENCES CUSTOMER(CUS_ID) ON DELETE CASCADE		-- on delete cascade: if parent row is deleted successfully from parent table, all the corresponding orders from its child table will be automatically deleted.
+-- );
+insert into order_details values(1,'2019-03-11',245);
+insert into order_details values(3,'2009-03-09',504);
+insert into order_details values(6,'2014-08-01',1252);
+insert into order_details values(5,'2009-03-09',1252);
+insert into order_details values(2,'2019-03-11',1252);
+insert into order_details values(5,'2009-03-09',1252);
+delete from order_details where order_id=2;
+select * from order_details;
+drop table order_details;
+show tables;
+CREATE TABLE ACCOUNT(
+ 	ACC_NO INT PRIMARY KEY UNIQUE,
+    OWNER_NAME VARCHAR(255) UNIQUE,
+    BALANCE INT NOT NULL DEFAULT 0
+--     CONSTRAINT MIN_BALANCE CHECK(BALANCE>1000) if default balance not set
+ );
+ALTER TABLE ACCOUNT ADD INTEREST FLOAT NOT NULL DEFAULT 6.5;  -- adds a new column to the table
+alter table account modify interest double not null default 7;  -- modifies the datatype of the column
+-- alter table account change column INTEREST RateofInterest float not null default 6;   -- renames the column name
+-- alter table account drop column rateofinterest;            -- successfully removes column from the table
+-- alter table account rename to myaccount;                 -- rename table name
+describe account;              -- EXPLAINS complete status of a table & its attributes
+INSERT INTO ACCOUNT
+ 	(ACC_NO,OWNER_NAME,BALANCE) VALUES
+ 		(386,'RAM NILAM',17400),
+        (387,'BABLU DAS',30500),
+        (384,'DABLU RAMA',29800),
+        (388,'ram paswan',7880);
+INSERT INTO ACCOUNT VALUES(382,'RAM Hari',1110,4.7);     -- all attribute values avail, no need to write attribute names.
+INSERT INTO ACCOUNT (ACC_NO,OWNER_NAME)VALUES(390,'shyam Hari');  --  if not full info. avail, must mention attribute names.the other attributes will be set to NULL or default values if provided, while creating the table.
+UPDATE ACCOUNT set OWNER_NAME='BABAN RAJA',BALANCE=14500 WHERE acc_no=387;   -- update account details
+
+-- update details collectively for all customers
+set sql_safe_updates=0;       -- set safe update warning(which avoids from disrupting whole database),to zero.
+UPDATE account set interest=12;  --  then update the details successfully.
+alter table account add age int not null default 18;
+update account set age=age+1;   -- update age every year manually for each customer
+
+DELETE from account where acc_no=384;  -- delete any particular account holder successfully(a complete row)
+
+-- to delete a table completely from the database
+set sql_safe_updates=0;
+delete from account;
+-- or apply this one to delete whole table from database
+drop table account;
+
+select * from account;
