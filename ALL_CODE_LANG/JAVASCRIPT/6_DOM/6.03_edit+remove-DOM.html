@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Part-3</title>
+</head>
+<body style="background-color: #212121; color:#fff">
+    <p>Hii , i am sudhashu shekhar.</p>
+    <ul class="language">
+        <li>c++</li>
+        <li>JavaScript</li>
+    </ul>
+</body>
+<script>
+    function addLanguage(langName){
+        const li=document.createElement('li');
+        //either use technique->1/2 only one, both for same purpose.
+            //if technique->1 used, it traverses O(n) each time to add any language, brute force
+            //if technique->2 used, it takes O(1)to add any language.
+        // li.innerHTML=`${langName}`;    -->technique:1
+        li.appendChild(document.createTextNode(langName))   //-->technique:2
+        document.querySelector('.language').appendChild(li);
+    }
+    addLanguage("python")
+    addLanguage("typeScript")
+
+    //Edit DOM      -->brute force technique-1
+    // const secondLang = document.querySelector("li:nth-child(2)")
+    // secondLang.innerHTML = "Mojo"      //-->brute force : worst case O(n^2)
+        // const firstLang = document.querySelector("li:first-child")
+        // firstLang.outerHTML = '<li>TypeScript</1li>' 
+
+
+    //Edit  DOM       -->optimal technique-2
+    // const secondLang = document.querySelector("li:nth-child(2)")    // trying to replace "javaScript"
+    // const newli = document.createElement('li')
+    // newli.textContent = "Mojo"
+    // secondLang.replaceWith(newli)
+
+    //Edit  DOM       -->optimal oneLiner technique-3
+    // const secondLang = document.querySelector("li:nth-child(2)")
+    // secondLang.replaceWith(Object.assign(document.createElement('li'),{textContent : "Mojo"}))
+
+    //REMOVE  DOM
+    // const lastLang = document.querySelector('li:last-child')
+    // lastLang. remove ()
+</script>
+</html>
